@@ -5,10 +5,9 @@ import { Certificate } from '../../models/certificate.model';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  styleUrls: ['./about.component.css'],
 })
 export class AboutComponent implements OnInit {
-
   //Variables utilizadas para perfil y movilidad de la pagina
   imageSecundaria: boolean = true;
   imageUniversitaria: boolean = false;
@@ -37,32 +36,42 @@ export class AboutComponent implements OnInit {
   certificateLightboxXl: any;
   activeCertificateXl: any;
 
-
   //Funciones de siguiente y anterior para las certificaciones
   SiguienteImagen() {
     if (this.indexCertificate == this.certificates.length - 1) {
       this.indexCertificate = 0;
-      document.getElementById("certificate")?.classList.add('animate-enter-card');
+      document
+        .getElementById('certificate')
+        ?.classList.add('animate-enter-card');
     } else {
       this.indexCertificate++;
-      document.getElementById("certificate")?.classList.add('animate-enter-card');
+      document
+        .getElementById('certificate')
+        ?.classList.add('animate-enter-card');
     }
     setTimeout(() => {
-      document.getElementById("certificate")?.classList.remove('animate-enter-card');
+      document
+        .getElementById('certificate')
+        ?.classList.remove('animate-enter-card');
     }, 850);
   }
   AnteriorImagen() {
     if (this.indexCertificate == this.certificates.length - 1) {
       this.indexCertificate = 0;
-      document.getElementById("certificate")?.classList.add('animate-enter-card');
+      document
+        .getElementById('certificate')
+        ?.classList.add('animate-enter-card');
     } else {
       this.indexCertificate--;
-      document.getElementById("certificate")?.classList.add('animate-enter-card');
+      document
+        .getElementById('certificate')
+        ?.classList.add('animate-enter-card');
     }
     setTimeout(() => {
-      document.getElementById("certificate")?.classList.remove('animate-enter-card');
+      document
+        .getElementById('certificate')
+        ?.classList.remove('animate-enter-card');
     }, 850);
-
   }
 
   //Apertura de imagen seleccionada
@@ -107,28 +116,36 @@ export class AboutComponent implements OnInit {
     this.certificates = [];
     this.indexCertificate = 0;
     this.tecnologySelected = tecnology;
-    this.certificatesService.getCertificates().subscribe(Certificate => {
-      Certificate.forEach(element => {
+    this.certificatesService.getCertificates().subscribe((Certificate) => {
+      Certificate.forEach((element) => {
         if (element?.tecnologia == this.tecnologySelected) {
           this.certificates.push(element);
         }
         this.load = true;
       });
-      document.getElementById("certificate")?.classList.add('animate-enter-card');
+      document
+        .getElementById('certificate')
+        ?.classList.add('animate-enter-card');
       setTimeout(() => {
-        document.getElementById("certificate")?.classList.remove('animate-enter-card');
+        document
+          .getElementById('certificate')
+          ?.classList.remove('animate-enter-card');
       }, 850);
-    })
+    });
   }
 
   ngOnInit(): void {
     //Se cargan los componentes necesarios
-    this.animado = document.querySelectorAll(".anim");
+    this.animado = document.querySelectorAll('.anim');
     this.btnExit = document.querySelector('#btn-exit');
     this.images = document.querySelectorAll('#galery img');
     this.lightbox = document.querySelector('#primary-container');
-    this.certificateLightbox = document.querySelector('#primary-container-certificate');
-    this.certificateLightboxXl = document.querySelector('#primary-container-xl');
+    this.certificateLightbox = document.querySelector(
+      '#primary-container-certificate'
+    );
+    this.certificateLightboxXl = document.querySelector(
+      '#primary-container-xl'
+    );
     this.activeImage = document.querySelector('#active-image');
     this.activeCertificate = document.querySelector('#active-certificate');
     this.activeCertificateXl = document.querySelector('#active-certificate-xl');
@@ -147,23 +164,39 @@ export class AboutComponent implements OnInit {
         this.animado[i].classList.add('visible');
       }
     }
-  };
+  }
 
   //Funcion de la seccion de navegacion para moverse en la pagina
 
   GoToDiv(page: string) {
     switch (page) {
       case 'front':
-        document.getElementById("perfil")?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        document.getElementById('perfil')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
         break;
       case 'back':
-        document.getElementById("educacion")?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        document.getElementById('educacion')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
         break;
       case 'fact':
-        document.getElementById("certificaciones")?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        document.getElementById('certificaciones')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
         break;
       case 'demo':
-        document.getElementById("experiencia")?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        document.getElementById('experiencia')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
         break;
       default:
         break;
@@ -173,13 +206,17 @@ export class AboutComponent implements OnInit {
   //Funciones para mover estados de educacion entre secundaria-superior-extras aqui se agregan y se quitan las funciones para el posicionamiento y animaciones de entrada
 
   LevelOne() {
-    document.getElementById('secondary-education')?.classList.add('animate-enter-card');
+    document
+      .getElementById('secondary-education')
+      ?.classList.add('animate-enter-card');
     document.getElementById('secondary-education')?.classList.add('flex');
     document.getElementById('secondary-education')?.classList.remove('hidden');
     document.getElementById('extra')?.classList.remove('animate-enter-card');
     document.getElementById('extra')?.classList.remove('flex');
     document.getElementById('extra')?.classList.add('hidden');
-    document.getElementById('university')?.classList.remove('animate-enter-card');
+    document
+      .getElementById('university')
+      ?.classList.remove('animate-enter-card');
     document.getElementById('university')?.classList.remove('flex');
     document.getElementById('university')?.classList.add('hidden');
     document.getElementById('activeLevel')?.classList.remove('left-2/5');
@@ -188,7 +225,9 @@ export class AboutComponent implements OnInit {
     document.getElementById('activeLevel')?.classList.add('left-0');
     document.getElementById('activeLevel')?.classList.add('animate-enter-card');
     setTimeout(() => {
-      document.getElementById('activeLevel')?.classList.remove('animate-enter-card');
+      document
+        .getElementById('activeLevel')
+        ?.classList.remove('animate-enter-card');
     }, 500);
   }
 
@@ -197,7 +236,9 @@ export class AboutComponent implements OnInit {
     document.getElementById('university')?.classList.add('animate-enter-card');
     document.getElementById('university')?.classList.add('flex');
     document.getElementById('university')?.classList.remove('hidden');
-    document.getElementById('secondary-education')?.classList.remove('animate-enter-card');
+    document
+      .getElementById('secondary-education')
+      ?.classList.remove('animate-enter-card');
     document.getElementById('secondary-education')?.classList.remove('flex');
     document.getElementById('secondary-education')?.classList.add('hidden');
     document.getElementById('extra')?.classList.remove('animate-enter-card');
@@ -209,17 +250,23 @@ export class AboutComponent implements OnInit {
     document.getElementById('activeLevel')?.classList.add('md:left-1/2');
     document.getElementById('activeLevel')?.classList.add('animate-enter-card');
     setTimeout(() => {
-      document.getElementById('activeLevel')?.classList.remove('animate-enter-card');
+      document
+        .getElementById('activeLevel')
+        ?.classList.remove('animate-enter-card');
     }, 500);
   }
   LevelThree() {
     document.getElementById('extra')?.classList.add('animate-enter-card');
     document.getElementById('extra')?.classList.add('flex');
     document.getElementById('extra')?.classList.remove('hidden');
-    document.getElementById('secondary-education')?.classList.remove('animate-enter-card');
+    document
+      .getElementById('secondary-education')
+      ?.classList.remove('animate-enter-card');
     document.getElementById('secondary-education')?.classList.remove('flex');
     document.getElementById('secondary-education')?.classList.add('hidden');
-    document.getElementById('university')?.classList.remove('animate-enter-card');
+    document
+      .getElementById('university')
+      ?.classList.remove('animate-enter-card');
     document.getElementById('university')?.classList.remove('flex');
     document.getElementById('university')?.classList.add('hidden');
     document.getElementById('activeLevel')?.classList.remove('left-0');
@@ -228,9 +275,9 @@ export class AboutComponent implements OnInit {
     document.getElementById('activeLevel')?.classList.add('right-0');
     document.getElementById('activeLevel')?.classList.add('animate-enter-card');
     setTimeout(() => {
-      document.getElementById('activeLevel')?.classList.remove('animate-enter-card');
+      document
+        .getElementById('activeLevel')
+        ?.classList.remove('animate-enter-card');
     }, 500);
   }
-
-
 }

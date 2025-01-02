@@ -61,6 +61,16 @@
 }
 
 /*Galeria de imagenes*/
+
+#bigGallery {
+  display: grid;
+  grid-gap: 2px;
+  max-width: 500px;
+  height: auto;
+  padding: 0 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 #secondaryGalery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -99,10 +109,10 @@
 }
 
 #secondary-container {
-  max-width: 819px;
-  max-height: 604px;
-  min-width: 204px;
-  min-height: 151px;
+  max-width: 604px;
+  max-height: 657px;
+  min-width: 151px;
+  min-height: 204px;
   border: 2px #f3f3f3 solid;
   padding: 2px;
   display: flex;
